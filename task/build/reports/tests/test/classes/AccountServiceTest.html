@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class AccountServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class AccountServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/default-package.html">default-package</a> &gt; AccountServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">13.766s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">start</td>
+<td class="success">13.766s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>?[1;31m
+Start test 1?[0m
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.1.RELEASE)
+
+2022-05-15 00:58:39.712  INFO 436023 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on toronto with PID 436023 (started by omar in /home/omar/IdeaProjects/Account Service/Account Service/task)
+2022-05-15 00:58:39.721  INFO 436023 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
+2022-05-15 00:58:44.501  INFO 436023 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-05-15 00:58:44.594  INFO 436023 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73ms. Found 0 JDBC repository interfaces.
+2022-05-15 00:58:46.084  INFO 436023 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (https)
+2022-05-15 00:58:46.118  INFO 436023 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-15 00:58:46.119  INFO 436023 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-05-15 00:58:46.290  INFO 436023 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-15 00:58:46.290  INFO 436023 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6364 ms
+2022-05-15 00:58:46.773  INFO 436023 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-15 00:58:47.458  INFO 436023 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-15 00:58:47.854  INFO 436023 --- [    Test worker] o.s.s.p.JdbcUserDetailsManager           : No authentication manager set. Reauthentication of users when changing passwords will not be performed.
+2022-05-15 00:58:47.953  INFO 436023 --- [    Test worker] o.s.aop.framework.CglibAopProxy          : Unable to proxy interface-implementing method [public final void org.springframework.dao.support.DaoSupport.afterPropertiesSet() throws java.lang.IllegalArgumentException,org.springframework.beans.factory.BeanInitializationException] because it is marked as final: Consider using interface-based JDK proxies instead!
+2022-05-15 00:58:48.458 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/api/auth/signup']
+2022-05-15 00:58:48.468 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/actuator/shutdown', POST]
+2022-05-15 00:58:48.469 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasAnyRole('ROLE_USER','ROLE_ACCOUNTANT','ROLE_ADMINISTRATOR')', for Ant [pattern='api/auth/**', POST]
+2022-05-15 00:58:48.479 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasAuthority('payment:read')', for Ant [pattern='/api/empl/payment*', GET]
+2022-05-15 00:58:48.480 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasAnyRole('ROLE_ACCOUNTANT')', for Ant [pattern='/api/acct/payments', POST]
+2022-05-15 00:58:48.480 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasAnyRole('ROLE_ACCOUNTANT')', for Ant [pattern='/api/acct/payments', PUT]
+2022-05-15 00:58:48.480 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasAuthority('event:read')', for Ant [pattern='/api/security/events/', GET]
+2022-05-15 00:58:48.481 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasAnyRole('ROLE_ADMINISTRATOR')', for Ant [pattern='/api/admin/**']
+2022-05-15 00:58:48.488 DEBUG 436023 --- [    Test worker] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'authenticated', for any request
+2022-05-15 00:58:48.504 DEBUG 436023 --- [    Test worker] o.s.s.w.a.i.FilterSecurityInterceptor    : Validated configuration attributes
+2022-05-15 00:58:48.506 DEBUG 436023 --- [    Test worker] o.s.s.w.a.i.FilterSecurityInterceptor    : Validated configuration attributes
+2022-05-15 00:58:48.523  INFO 436023 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22da200e, org.springframework.security.web.context.SecurityContextPersistenceFilter@1b409a79, org.springframework.security.web.header.HeaderWriterFilter@7bede4ea, org.springframework.security.web.authentication.logout.LogoutFilter@314b7945, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7871d261, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1cba0321, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e0a9b1d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f26425b, org.springframework.security.web.session.SessionManagementFilter@2dcd0e41, org.springframework.security.web.access.ExceptionTranslationFilter@652e345, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@58601e7a]
+2022-05-15 00:58:48.881  INFO 436023 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-05-15 00:58:49.678  INFO 436023 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-05-15 00:58:51.041  INFO 436023 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (https) with context path ''
+2022-05-15 00:58:51.064  INFO 436023 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 12.475 seconds (JVM running for 15.202)
+CN=accountant_service, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown SHA256withRSA
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.4</a> at May 15, 2022, 12:58:52 AM</p>
+</div>
+</div>
+</body>
+</html>
