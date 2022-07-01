@@ -2,13 +2,11 @@ package account.web;
 
 import account.model.AdminOperation;
 import account.services.AdminService;
-import org.apache.juli.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
@@ -36,14 +34,14 @@ public class AdminController {
 
   @PutMapping("user/role")
   public ResponseEntity<?> updateRole(@RequestBody AdminOperation adminOperation) {
-    LOGGER.info("OP: {}" , adminOperation);
+    LOGGER.info("[ADMIN_CONTROLLER] OPERATION : {}" , adminOperation);
     return ResponseEntity.ok(this.adminService.apply(adminOperation));
   }
 
   @PutMapping("user/access")
   public ResponseEntity<?> lockOrUnlockUser(@RequestBody AdminOperation operation) {
     LOGGER.info("OP: {}" , operation);
-    final Map<String, String> response = this.adminService.lockOrUnlock(operation);
+    final Map<String, String> response = this.adminService.applyOperation(operation);
     return ResponseEntity.ok(response);
   }
 }

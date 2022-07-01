@@ -28,9 +28,9 @@ import static account.security.ApplicationUserRole.ADMINISTRATOR;
 import static account.security.ApplicationUserRole.USER;
 
 @Service
-public class AuthenticationService {
+public class RegistrationService {
 
-  private final Logger LOGGER = LoggerFactory.getLogger(AuthenticationService.class);
+  private final Logger LOGGER = LoggerFactory.getLogger(RegistrationService.class);
   private final JdbcUserDetailsManager jdbcUserDetailsManager;
   private final UserDataRepository userDataRepository;
   private final PasswordEncoder passwordEncoder;
@@ -38,7 +38,7 @@ public class AuthenticationService {
   private final SecurityEventPublisher securityEventPublisher;
   private final PasswordService passwordService = new PasswordService();
   @Lazy
-  public AuthenticationService(JdbcUserDetailsManager jdbcUserDetailsManager, UserDataRepository userDataRepository, PasswordEncoder passwordEncoder, SecurityEventPublisher securityEventPublisher) {
+  public RegistrationService(JdbcUserDetailsManager jdbcUserDetailsManager, UserDataRepository userDataRepository, PasswordEncoder passwordEncoder, SecurityEventPublisher securityEventPublisher) {
     this.jdbcUserDetailsManager = jdbcUserDetailsManager;
     this.userDataRepository = userDataRepository;
     this.passwordEncoder = passwordEncoder;

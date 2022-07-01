@@ -40,7 +40,6 @@ public class AuthenticationFailureListener
 
   @Override
   public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent event) {
-    LOGGER.info("555555555555555555555555555555555555555555555555555");
     String email = event.getAuthentication().getName().toLowerCase();
     LOGGER.info("{},   {}", email, this.jdbcUserDetailsManager.userExists(email));
     if (this.jdbcUserDetailsManager.userExists(email)) {
@@ -69,16 +68,11 @@ public class AuthenticationFailureListener
               )
           );
         }
-      } else {
-
       }
     } else {
       publishLoginFailedEvent(request, email);
     }
   }
-
-
-
 
 
   private void publishLoginFailedEvent(HttpServletRequest request, String email) {
@@ -97,5 +91,3 @@ public class AuthenticationFailureListener
     this.userDataRepository = userDataRepository;
   }
 }
-
-// && !this.jdbcUserDetailsManager.loadUserByUsername(email).getAuthorities().contains(ApplicationUserRole.ADMINISTRATOR.name())

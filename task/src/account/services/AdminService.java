@@ -193,47 +193,55 @@ public class AdminService {
     return this.userDataRepository.findAll();
   }
 
-  public Map<String, String> lockOrUnlock(AdminOperation operation) {
+  public Map<String, String> applyOperation(AdminOperation operation) {
     if (!this.jdbcUserDetailsManager.userExists(operation.getUser())) {
       throw new UserEmailNotFoundException();
     }
 
-    String adminEmail = SecurityContextHolder.getContext()
+    final String userEmail = operation.getUser().toLowerCase();
+    final String adminEmail = SecurityContextHolder.getContext()
         .getAuthentication()
         .getName()
         .toLowerCase();
 
-    if(adminEmail.equals(operation.getUser())) {
+    if(adminEmail.equals(userEmail)) {
       throw new IllegalOperationException("Can't lock the ADMINISTRATOR!");
     }
     final String LOCK = "LOCK";
     final String UNLOCK = "UNLOCK";
     if (LOCK.equals(operation.getOperation())) {
-      if (operation.getUser().toLowerCase().equals(adminEmail))
-        throw new IllegalOperationException("Can't lock the ADMINISTRATOR!");
-      this.adminRepository.lockUser(operation.getUser());
-      this.securityEventPublisher.publishSecurityEvent(
-          new EventEntity(
-              Event.LOCK_USER,
-              adminEmail,
-              "Lock user " + operation.getUser().toLowerCase(),
-              "/api/admin/user/access"
-          )
-      );
-      return Map.of("status", "User " + operation.getUser().toLowerCase() + " locked!");
+      return lockUser(userEmail, adminEmail);
     } else if (UNLOCK.equals(operation.getOperation())) {
-      this.adminRepository.unlockUser(operation.getUser());
-      this.securityEventPublisher.publishSecurityEvent(
-          new EventEntity(
-              Event.UNLOCK_USER,
-              adminEmail,
-              "Unlock user " + operation.getUser().toLowerCase(),
-              "/api/admin/user/access"
-          )
-      );
-      return Map.of("status", "User " + operation.getUser().toLowerCase() + " unlocked!");
+      return unlockUser(userEmail, adminEmail);
     } else {
       throw new IllegalOperationException("Not Supported");
     }
+  }
+
+  private Map<String, String> lockUser(String emailToBeLocked, String adminEmail) {
+    this.adminRepository.lockUser(emailToBeLocked);
+    this.securityEventPublisher.publishSecurityEvent(
+        new EventEntity(
+            Event.LOCK_USER,
+            adminEmail,
+            "Lock user " +emailToBeLocked,
+            "/api/admin/user/access"
+        )
+    );
+    return Map.of("status", "User " + emailToBeLocked + " locked!");
+  }
+
+
+  private Map<String, String> unlockUser(String emailToBeUnlocked, String adminEmail) {
+    this.adminRepository.unlockUser(emailToBeUnlocked);
+    this.securityEventPublisher.publishSecurityEvent(
+        new EventEntity(
+            Event.UNLOCK_USER,
+            adminEmail,
+            "Unlock user " + emailToBeUnlocked,
+            "/api/admin/user/access"
+        )
+    );
+    return Map.of("status", "User " + emailToBeUnlocked + " unlocked!");
   }
 }
