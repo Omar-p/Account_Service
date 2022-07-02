@@ -22,7 +22,10 @@ import static account.security.ApplicationUserRole.*;
 
 @EnableWebSecurity
 public class Configuration extends WebSecurityConfigurerAdapter {
-
+  
+  
+  @Autowired
+  private DataSource dataSource;
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,22 +41,19 @@ public class Configuration extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
         .antMatchers("/api/auth/signup").permitAll()
         .antMatchers(HttpMethod.POST, "/actuator/shutdown").permitAll()
-        .antMatchers(HttpMethod.POST, "api/auth/**").hasAnyRole(USER.name(), ACCOUNTANT.name(), ADMINISTRATOR.name())
+        .antMatchers(HttpMethod.POST, "/api/auth/**").hasAnyRole(USER.name(), ACCOUNTANT.name(), ADMINISTRATOR.name())
         .antMatchers(HttpMethod.GET, "/api/empl/payment*").hasAuthority(PAYMENT_READ.getAuthority())
         .antMatchers(HttpMethod.POST, "/api/acct/payments").hasAnyRole(ACCOUNTANT.name())
         .antMatchers(HttpMethod.PUT,  "/api/acct/payments").hasAnyRole(ACCOUNTANT.name())
         .antMatchers(HttpMethod.GET,  "/api/security/events/").hasAuthority(EVENT_READ.getAuthority())
         .antMatchers( "/api/admin/**").hasAnyRole(ADMINISTRATOR.name())
-        .anyRequest().authenticated()
+        .anyRequest().denyAll()
         .and()
         .exceptionHandling()
         .accessDeniedHandler(accessDeniedHandler())
         .and()
         .httpBasic().authenticationEntryPoint(getEntryPoint());
   }
-
-  @Autowired
-  private DataSource dataSource;
 
   @Bean
   public JdbcUserDetailsManager jdbcUserDetailsManager() {
